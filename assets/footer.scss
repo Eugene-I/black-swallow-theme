@@ -1,0 +1,338 @@
+/* 
+------------------------------------------------------------------------------------------------------------------------------------
+Table of Content
+------------------------------------------------------------------------------------------------------------------------------------
+	#Global variables
+	#Plugins styles
+	#Fonts assets
+	#Typography styles
+	#Elements styles
+	#Header styles
+	#Custom styles for Homepage
+------------------------------------------------------------------------------------------------------------------------------------
+*/
+
+/* 
+------------------------------------------------------------------------------------------------------------------------------------
+  #Global variables
+------------------------------------------------------------------------------------------------------------------------------------
+*/
+
+$color-orange: #ff6006;
+$color-orange-plus1: #ff8d07;
+$color-orange-plus2: #ffbc97;
+$color-orange-minus1: #ff4800;
+$color-orange-minus2: #ff2800;
+
+$color-purple: #7700fc;
+$color-purple-plus1: #cc30ff;
+$color-purple-plus2: #efc6ff;
+$color-purple-minus1: #5c058a;
+$color-purple-minus2: #420093;
+
+$color-yellow: #e9ff09;
+$color-yellow-plus1: #f5ff23;
+$color-yellow-plus2: #e8ff85;
+$color-yellow-minus1: #cbff22;
+// $color-yellow-minus2:				#420093;
+
+$color-blue: #00f3ff;
+$color-blue-plus1: #00feff;
+$color-blue-plus2: #9ffcfc;
+$color-blue-minus1: #00e7ff;
+$color-blue-minus2: #00d1ff;
+
+$color-pink: #fe1f7a;
+$color-pink-plus1: #ff28c9;
+$color-pink-plus2: #ffcbe5;
+$color-pink-minus1: #fd0037;
+$color-pink-minus2: #fb000b;
+
+$color-system-black: #000;
+$color-system-red: #f40b3f;
+$color-system-green: #1dec63;
+$color-system-white: #fff;
+
+$gradient1: linear-gradient(180deg, #cc2fff, #ff6005);
+$gradient2: linear-gradient(180deg, #f40b3f, #fd1f79);
+$gradient3: linear-gradient(180deg, #cc2fff, #caff21);
+$gradient4: linear-gradient(180deg, #fd4d6b, #1ceb62);
+$gradient5: linear-gradient(180deg, #fd4d6b, #5b0489);
+$gradient6: linear-gradient(180deg, #ff6005, #00f2ff);
+$gradient7: linear-gradient(180deg, #fd4d6b, #ff6005);
+$gradient8: linear-gradient(180deg, #1ceb62, #00f2ff);
+
+// Typography
+$base-font-sans-serif: "Atten New", "Arial", "Helvetica Neue", "Helvetica", sans-serif;
+$base-font-serif: "Times New Roman", "Times", "Baskerville", "Georgia", serif;
+$base-font-family: $base-font-sans-serif !default;
+
+$font-size-base-mobile: 12px;
+$line-height-base-mobile: 16px;
+$font-size-base-desktop: 14px;
+$line-height-base-desktop: 24px;
+
+$h1-font-size-mobile: 16px;
+$h1-line-height-mobile: 21px;
+$h1-font-size-desktop: 24px;
+$h1-line-height-desktop: 32px;
+
+$h2-font-size-mobile: 12px;
+$h2-line-height-mobile: 16px;
+$h2-font-size-desktop: 16px;
+$h2-line-height-desktop: 21px;
+
+$h3-font-size-mobile: 9px;
+$h3-line-height-mobile: 12px;
+$h3-font-size-desktop: 14px;
+$h3-line-height-desktop: 19px;
+
+$h4-font-size-mobile: 7px;
+$h4-line-height-mobile: 9px;
+$h4-font-size-desktop: 7px;
+$h4-line-height-desktop: 9px;
+
+// Body
+$base-text-color: $color-system-black;
+$base-background-color: $color-system-white;
+
+$base-min-width: 320px;
+
+/* 
+------------------------------------------------------------------------------------------------------------------------------------
+  #Footer
+------------------------------------------------------------------------------------------------------------------------------------
+*/
+
+
+#shopify-section-footer{}
+
+#MainContent{
+	// display: none;
+}
+
+.site-footer{
+	background: #e6e6e6;
+	margin: 0;
+	padding: 12px 0 10px;
+}
+
+#footer {
+	display: none;
+}
+/**********************************************************************************************************************************************/
+
+#footer {
+	background: $color-system-black;
+	color: $color-system-white;
+}
+
+.section-newsletter {
+	background: #e6e6e6;
+	border-top: 1px solid $color-system-black;
+	color: $color-system-black;
+	padding: 20px 0 30px;
+	text-align: center;
+	> .container {
+		@media screen and (min-width: 768px) {
+			max-width: 660px;
+		}
+	}
+	.icon {
+		display: block;
+		margin: 0 auto 23px;
+	}
+	h2,
+	.h2 {
+		margin: 0 0 10px;
+	}
+	p {
+		margin: 0 0 23px;
+	}
+}
+
+.form-newsletter {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: flex-start;
+	align-content: flex-start;
+	align-items: flex-start;
+	.btn {
+		border-left-width: 0;
+		min-width: 96px;
+	}
+}
+
+.section-socials-icons {
+	// border-bottom: 2px solid $color-system-white;
+	font-size: 0;
+	line-height: 0;
+	padding: 10px 0 11px;
+	ul {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: nowrap;
+		justify-content: space-around;
+		align-content: center;
+		align-items: center;
+		@extend %listreset;
+		li {
+			padding: 0 10px;
+		}
+	}
+}
+
+.section-footer-content {
+	background: $color-system-white;
+	color: $color-system-black;
+	@media screen and (min-width: 768px) {
+		background: $color-system-black;
+		color: $color-system-white;
+	}
+	.content-holder {
+		@media screen and (min-width: 768px) {
+			display: flex;
+			flex-direction: row;
+			flex-wrap: nowrap;
+			justify-content: space-between;
+			align-content: flex-start;
+			align-items: flex-start;
+		}
+	}
+	.bottom-content {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: nowrap;
+		justify-content: space-between;
+		align-content: flex-start;
+		align-items: flex-start;
+		padding: 10px 0 20px;
+	}
+}
+
+.footer-nav {
+	color: $color-system-white;
+	display: none;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: flex-start;
+	align-content: flex-start;
+	align-items: flex-start;
+	text-transform: uppercase;
+	@media screen and (min-width: 768px) {
+		display: flex;
+	}
+	@extend %listreset;
+
+	> li {
+		width: 25%;
+	}
+	a {
+		color: inherit;
+	}
+	ul {
+		text-transform: none;
+		@extend %listreset;
+	}
+}
+
+.footer-payment-block {
+	> div {
+		@media screen and (min-width: 768px) {
+			display: flex;
+			flex-direction: row;
+			flex-wrap: nowrap;
+			justify-content: flex-start;
+			align-content: flex-start;
+			align-items: flex-start;
+		}
+	}
+	.currency-selector {
+		display: none;
+		@media screen and (min-width: 768px) {
+			display: block;
+		}
+	}
+}
+
+.payments-method-list {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-content: center;
+	align-items: center;
+	padding: 10px 0 11px;
+	@extend %listreset;
+	&.large {
+		display: none;
+		@media screen and (min-width: 768px) {
+			display: flex;
+		}
+		li {
+			padding: 12px;
+			width: 50%;
+		}
+		a {
+			border: 1px solid #979797;
+			border-radius: 0;
+			height: auto;
+			width: auto;
+		}
+	}
+	li {
+		padding: 2px;
+	}
+	a {
+		background: #b3b3b3;
+		border-radius: 7px;
+		display: inline-block;
+		vertical-align: top;
+		height: 13px;
+		width: 33px;
+	}
+}
+
+.copy {
+	margin: 0;
+	text-transform: uppercase;
+}
+
+.footer-bottom-nav {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: flex-start;
+	align-content: flex-start;
+	align-items: flex-start;
+	// text-transform: uppercase;
+	@extend %listreset;
+	li {
+		margin: 0 0 0 4px;
+		padding: 0 0 0 4px;
+		position: relative;
+		&:first-child {
+			margin: 0;
+			padding: 0;
+			&:before {
+				display: none;
+			}
+		}
+		&:before {
+			background: $color-system-black;
+			content: "";
+			height: 6px;
+			left: 0;
+			position: absolute;
+			top: 0;
+			// transform: translateY(-50%);
+			width: 1px;
+		}
+	}
+	a {
+		color: inherit;
+		text-decoration: none;
+	}
+}
+/**/

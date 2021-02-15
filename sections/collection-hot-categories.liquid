@@ -1,63 +1,78 @@
-<div class="page-width">
-	{% if section.settings.title != blank %}
-		<div class="section-header text-center">
-			<h2>{{ section.settings.title | escape }}</h2>
-		</div>
-	{% endif %}
-
-	{%- assign collection = collections[section.settings.collection] -%}
-
-	{% case section.settings.grid %}
-		{% when 2 %}
-			{%- assign max_height = 530 -%}
-			{%- assign grid_item_width = 'medium-up--one-half' -%}
-		{% when 3 %}
-			{%- assign max_height = 345 -%}
-			{%- assign grid_item_width = 'small--one-half medium-up--one-third' -%}
-		{% when 4 %}
-			{%- assign max_height = 250 -%}
-			{%- assign grid_item_width = 'small--one-half medium-up--one-quarter' -%}
-		{% when 5 %}
-			{%- assign max_height = 195 -%}
-			{%- assign grid_item_width = 'small--one-half medium-up--one-fifth' -%}
-	{% endcase %}
-
-	{%- assign product_limit = section.settings.grid | times: section.settings.rows -%}
-
-	<ul class="grid grid--uniform grid--view-items">
-		{% for product in collection.products limit: product_limit %}
-			<li class="grid__item grid__item--{{section.id}} {{ grid_item_width }}">
-				{% include 'product-card-grid', max_height: max_height, product: product, show_vendor: section.settings.show_vendor %}
-			</li>
-		{% else %}
-
-			{% for i in (1..product_limit) %}
-				<li class="grid__item grid__item--{{section.id}} {{ grid_item_width }}">
-					<div class="grid-view-item product-card">
-						<a class="grid-view-item__link grid-view-item__image-container full-width-link" href="#">
-							<span class="visually-hidden">{{ 'homepage.onboarding.product_title' | t }}</span>
-						</a>
-						<div class="grid-view-item__image-wrapper">
-							{% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
-							{{ 'product-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
-						</div>
-						<div class="h4 grid-view-item__title" aria-hidden="true">{{ 'homepage.onboarding.product_title' | t }}</div>
-						{% include 'product-price' %}
+<div {% if section.settings.enable_background %} style="background-color: #f2f2f2;" {% endif %}>
+	<div class="page-width">
+		{% if section.settings.title != blank %}
+			<div class="section-header text-center">
+				<h2 class="h1">{{ section.settings.title | escape }}</h2>
+			</div>
+		{% endif %}
+	
+		{%- assign collection = collections[section.settings.collection] -%}
+	
+		{% case section.settings.grid %}
+			{% when 2 %}
+				{%- assign max_height = 530 -%}
+				{%- assign grid_item_width = 'medium-up--one-half' -%}
+			{% when 3 %}
+				{%- assign max_height = 345 -%}
+				{%- assign grid_item_width = 'small--one-half medium-up--one-third' -%}
+			{% when 4 %}
+				{%- assign max_height = 250 -%}
+				{%- assign grid_item_width = 'small--one-half medium-up--one-quarter' -%}
+			{% when 5 %}
+				{%- assign max_height = 195 -%}
+				{%- assign grid_item_width = 'small--one-half medium-up--one-fifth' -%}
+		{% endcase %}
+	
+		{%- assign product_limit = section.settings.grid | times: section.settings.rows -%}
+	
+		<div class="grid grid--uniform grid--view-items">
+			{% for product in collection.products limit: product_limit %}
+				<div class="grid__item grid__item--{{section.id}} {{ grid_item_width }}">
+					{% comment %}
+					{% include 'product-card-grid', max_height: max_height, product: product, show_vendor: section.settings.show_vendor %}
+					{% endcomment %}
+					<div class="category-single-box">
+						<div class="category-single-box-media-holder"><img src="https://via.placeholder.com/200x100" width="145" height="143" alt="Image description"></div>
+						<h3 class="category-single-box-title font-size-subheading"><a href="#">category</a></h3>
 					</div>
-				</li>
+				</div>
+				{% else %}
+				
+				{% for i in (1..product_limit) %}
+				<div class="grid__item grid__item--{{section.id}} {{ grid_item_width }}">
+						{% comment %}
+						<div class="grid-view-item product-card">
+							<a class="grid-view-item__link grid-view-item__image-container full-width-link" href="#">
+								<span class="visually-hidden">{{ 'homepage.onboarding.product_title' | t }}</span>
+							</a>
+							<div class="grid-view-item__image-wrapper">
+								{% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
+								{{ 'product-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+							</div>
+							<div class="h4 grid-view-item__title" aria-hidden="true">{{ 'homepage.onboarding.product_title' | t }}</div>
+							{% include 'product-price' %}
+						</div>
+						{% endcomment %}
+						<div class="category-single-box">
+							<div class="category-single-box-media-holder"><img src="https://via.placeholder.com/200x100" width="145" height="143" alt="Image description"></div>
+							<h3 class="category-single-box-title font-size-subheading"><a href="#">category</a></h3>
+						</div>
+					</div>
+				{% endfor %}
 			{% endfor %}
-		{% endfor %}
-	</ul>
-
-	{% if section.settings.show_view_all %}
-		<hr class="hr--invisible" aria-hidden="true" />
-		<div class="text-center">
-			<a href="{{ collection.url }}" class="btn" aria-label="{{ 'collections.general.view_all_label' | t: collection_name: collection.title }}">
-				{{ 'collections.general.view_all' | t }}
-			</a>
 		</div>
-	{% endif %}
-
+	
+		{% if section.settings.show_view_all %}
+		<div class="buttons-grid center">
+			<div>
+				<a href="{{ collection.url }}" class="btn btn-view-more"
+					aria-label="{{ 'collections.general.view_all_label' | t: collection_name: collection.title }}">
+					{{ 'collections.general.view_all' | t }}
+				</a>
+			</div>
+		</div>
+		{% endif %}
+	</div>
 </div>
 
 
@@ -65,30 +80,18 @@
 {% schema %}
 {
 	"name": {
-		"cs": "Propagovaná kolekce",
-		"da": "Udvalgt kollektion",
-		"de": "Vorgestellte Kategorie",
-		"en": "Featured collection",
-		"es": "Colección destacada",
-		"fi": "Esittelyssä oleva kokoelma",
-		"fr": "Collection en vedette",
-		"it": "Collezione in evidenza",
-		"ja": "特集コレクション",
-		"ko": "추천 컬렉션",
-		"nb": "Utvalgt samling",
-		"nl": "Uitgelichte collectie",
-		"pl": "Polecana kolekcja",
-		"pt-BR": "Coleção em destaque",
-		"pt-PT": "Coleção em destaque",
-		"sv": "Utvald kollektion",
-		"th": "คอลเลกชันแนะนำ",
-		"tr": "Öne çıkan koleksiyon",
-		"vi": "Bộ sưu tập nổi bật",
-		"zh-CN": "特色产品系列",
-		"zh-TW": "精選商品系列"
+		"en": "Hot categories"
 	},
-	"class": "index-section",
+	"class": "index-section section-collection",
 	"settings": [
+		{
+			"type": "checkbox",
+			"id": "enable_background",
+			"label": {
+				"en": "Enable section background"
+			},
+			"default": false
+		},
 		{
 			"type": "text",
 			"id": "title",
@@ -116,27 +119,7 @@
 				"zh-TW": "標題"
 			},
 			"default": {
-				"cs": "Propagovaná kolekce",
-				"da": "Udvalgt kollektion",
-				"de": "Vorgestellte Kategorie",
-				"en": "Featured collection",
-				"es": "Colección destacada",
-				"fi": "Esittelyssä oleva kokoelma",
-				"fr": "Collection en vedette",
-				"it": "Collezione in evidenza",
-				"ja": "特集コレクション",
-				"ko": "추천 컬렉션",
-				"nb": "Fremhevet samling",
-				"nl": "Uitgelichte collectie",
-				"pl": "Polecana kolekcja",
-				"pt-BR": "Coleção em destaque",
-				"pt-PT": "Coleção em destaque",
-				"sv": "Utvald kollektion",
-				"th": "คอลเลกชันแนะนำ",
-				"tr": "Öne çıkan koleksiyon",
-				"vi": "Bộ sưu tập nổi bật",
-				"zh-CN": "特色产品系列",
-				"zh-TW": "精選商品系列"
+				"en": "Hot categories"
 			}
 		},
 		{
@@ -288,27 +271,7 @@
 	"presets": [
 		{
 			"name": {
-				"cs": "Propagovaná kolekce",
-				"da": "Udvalgt kollektion",
-				"de": "Vorgestellte Kategorie",
-				"en": "Featured collection",
-				"es": "Colección destacada",
-				"fi": "Esittelyssä oleva kokoelma",
-				"fr": "Collection en vedette",
-				"it": "Collezione in evidenza",
-				"ja": "特集コレクション",
-				"ko": "추천 컬렉션",
-				"nb": "Utvalgt samling",
-				"nl": "Uitgelichte collectie",
-				"pl": "Polecana kolekcja",
-				"pt-BR": "Coleção em destaque",
-				"pt-PT": "Coleção em destaque",
-				"sv": "Utvald kollektion",
-				"th": "คอลเลกชันแนะนำ",
-				"tr": "Öne çıkan koleksiyon",
-				"vi": "Bộ sưu tập nổi bật",
-				"zh-CN": "特色产品系列",
-				"zh-TW": "精選商品系列"
+				"en": "Hot categories"
 			},
 			"category": {
 				"cs": "Kolekce",

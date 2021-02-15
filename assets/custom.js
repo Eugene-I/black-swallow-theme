@@ -26,12 +26,11 @@ function initSlick() {
 	});
 	
 	$('.js-gallery-slider').slick({
-		// slidesToShow: 6,
-		// slidesToScroll: 6,
+		slidesToShow: 5,
+		slidesToScroll: 5,
 		arrows: false,
 		infinite: false,
 		variableWidth: true,
-		// dots: false,
 		responsive: [
 			{
 				breakpoint: 767,
