@@ -1,0 +1,1 @@
+theme watch --allow-live
