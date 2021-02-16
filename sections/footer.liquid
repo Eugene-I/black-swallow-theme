@@ -79,41 +79,42 @@ or request.page_type == 'blog'
 {%- if footer_text_color_brightness <= 26 -%} {%- assign footer_text_color_hover=footer_text_color | color_lighten: 25
 	-%} {%- elsif footer_text_color_brightness <=65 -%} {%- assign footer_text_color_hover=footer_text_color |
 	color_lighten: 15 -%} {%- else -%} {%- assign footer_text_color_hover=footer_text_color | color_darken: 10 -%} {%-
-	endif -%} <style>
-	.site-footer__hr {
-	border-bottom: 1px solid {{ section.settings.color_footer_bg | color_darken: 10 }};
-	}
+	endif -%}
+	<style>
+		.site-footer__hr {
+			border-bottom: 1px solid {{ section.settings.color_footer_bg | color_darken: 10 }};
+		}
 
-	.site-footer p,
-	.site-footer__linklist-item a,
-	.site-footer__rte a,
-	.site-footer h4,
-	.site-footer small,
-	.site-footer__copyright-content a,
-	.site-footer__newsletter-error,
-	.site-footer__social-icons .social-icons__link {
-		color: {{ section.settings.color_footer_text }};
-	}
+		.site-footer p,
+		.site-footer__linklist-item a,
+		.site-footer__rte a,
+		.site-footer h4,
+		.site-footer small,
+		.site-footer__copyright-content a,
+		.site-footer__newsletter-error,
+		.site-footer__social-icons .social-icons__link {
+			color: {{ section.settings.color_footer_text }};
+		}
 
-	.site-footer {
-		color: {{ section.settings.color_footer_text }};
-		background-color: {{ section.settings.color_footer_bg }};
-	}
+		.site-footer {
+			color: {{ section.settings.color_footer_text }};
+			background-color: {{ section.settings.color_footer_bg }};
+		}
 
-	.site-footer__rte a {
-		border-bottom: 1px solid {{ section.settings.color_footer_text }};
-	}
+		.site-footer__rte a {
+			border-bottom: 1px solid {{ section.settings.color_footer_text }};
+		}
 
-	.site-footer__rte a:hover,
-	.site-footer__linklist-item a:hover,
-	.site-footer__copyright-content a:hover {
-		color: {{ footer_text_color_hover }};
-		border-bottom: 1px solid {{ footer_text_color_hover }};
-	}
+		.site-footer__rte a:hover,
+		.site-footer__linklist-item a:hover,
+		.site-footer__copyright-content a:hover {
+			color: {{ footer_text_color_hover }};
+			border-bottom: 1px solid {{ footer_text_color_hover }};
+		}
 
-	.site-footer__social-icons .social-icons__link:hover {
-		color: {{ footer_text_color_hover }};
-	}
+		.site-footer__social-icons .social-icons__link:hover {
+			color: {{ footer_text_color_hover }};
+		}
 	</style>
 
 
@@ -146,65 +147,68 @@ or request.page_type == 'blog'
 						<div class="site-footer__item-inner site-footer__item-inner--{{ block.type }}">
 
 							{%- if block.settings.title -%}
-							<p class="h2">{{ block.settings.title | escape }}</p>
+								<p class="h2">{{ block.settings.title | escape }}</p>
 							{%- endif -%}
 
 							{%- case block.type -%}
-							{%- when 'newsletter' -%}
-							<div class="site-footer__newsletter
-														{% if section.blocks.size == 1 %} site-footer__single-block--centered{% endif %}">
-								{%- assign formId = 'ContactFooter' -%}
-								{% form 'customer', id: formId, novalidate: 'novalidate' %}
-								{%- if form.posted_successfully? -%}
-								<p class="form-message form-message--success" tabindex="-1" data-form-status>
-									{{ 'general.newsletter_form.confirmation' | t }}
-								</p>
-								{%- endif -%}
-								<input type="hidden" name="contact[tags]" value="newsletter">
-								<div class="input-group {% if form.errors %} input-group--error{% endif %}">
-									<input type="email" name="contact[email]" id="{{ formId }}-email"
-										class="input-group__field newsletter__input{% if form.errors %} input--error{% endif %}"
-										value="{{ form.email }}" placeholder="{{ 'general.newsletter_form.email_placeholder' | t }}"
-										aria-label="{{ 'general.newsletter_form.email_placeholder' | t }}" aria-required="true" required
-										autocorrect="off" autocapitalize="off" {% if form.errors %} aria-invalid="true"
-										aria-describedby="{{ formId }}-email-error" data-form-status {% endif %}>
-									<span class="input-group__btn">
-										<button type="submit" class="btn newsletter__submit" name="commit">
-											<span class="newsletter__submit-text--large">{{ 'general.newsletter_form.submit' | t }}</span>
-										</button>
-									</span>
-								</div>
-								{% if form.errors contains 'email' %}
-								<span id="{{ formId }}-email-error" class="input-error-message">
-									<span class="visually-hidden">{{ 'general.accessibility.error' | t }} </span>
-									{% include 'icon-error' %}
-									<span class="site-footer__newsletter-error">{{ form.errors.translated_fields['email'] | capitalize }} {{
-										form.errors.messages['email'] }}.</span>
-								</span>
-								{% endif %}
-								{% endform %}
-							</div>
+								{%- when 'newsletter' -%}
+									<div class="rich-text">{{ block.settings.richtext }}</div>
+									<div class="site-footer__newsletter {% if section.blocks.size == 1 %} site-footer__single-block--centered{% endif %}">
+										{%- assign formId = 'ContactFooter' -%}
 
-							{%- when 'text' -%}
-							{%- if block.settings.text != blank -%}
-							<div class="site-footer__rte
-																{% if section.blocks.size == 1 %} site-footer__single-block--centered{% endif %}">
-								{{ block.settings.text }}
-							</div>
-							{%- endif -%}
+										{% form 'customer', id: formId, novalidate: 'novalidate' %}
+											{%- if form.posted_successfully? -%}
+												<p class="form-message form-message--success" tabindex="-1" data-form-status>
+													{{ 'general.newsletter_form.confirmation' | t }}
+												</p>
+											{%- endif -%}
 
-							{%- when 'link_list' -%}
-							{%- assign footer_linklist = block.settings.menu -%}
-							<ul class="site-footer__linklist
-															{% if inline_list %}list--inline{% endif %}">
-								{%- for link in linklists[footer_linklist].links -%}
-								<li class="site-footer__linklist-item">
-									<a href="{{ link.url }}" {% if link.current %} aria-current="page" {% endif %}>
-										{{ link.title | escape }}
-									</a>
-								</li>
-								{%- endfor -%}
-							</ul>
+											<input type="hidden" name="contact[tags]" value="newsletter">
+											<div class="input-group {% if form.errors %} input-group--error{% endif %}">
+												<input type="email" name="contact[email]" id="{{ formId }}-email"
+													class="input-group__field newsletter__input{% if form.errors %} input--error{% endif %}"
+													value="{{ form.email }}" placeholder="{{ 'general.newsletter_form.email_placeholder' | t }}"
+													aria-label="{{ 'general.newsletter_form.email_placeholder' | t }}" aria-required="true" required
+													autocorrect="off" autocapitalize="off" {% if form.errors %} aria-invalid="true"
+													aria-describedby="{{ formId }}-email-error" data-form-status {% endif %}>
+												<span class="input-group__btn">
+													<button type="submit" class="btn newsletter__submit" name="commit">
+														<span class="newsletter__submit-text--large">{{ 'general.newsletter_form.submit' | t }}</span>
+													</button>
+												</span>
+											</div>
+											
+											{% if form.errors contains 'email' %}
+												<span id="{{ formId }}-email-error" class="input-error-message">
+													<span class="visually-hidden">{{ 'general.accessibility.error' | t }} </span>
+													{% include 'icon-error' %}
+													<span class="site-footer__newsletter-error">{{ form.errors.translated_fields['email'] | capitalize }} {{
+														form.errors.messages['email'] }}.</span>
+												</span>
+											{% endif %}
+										{% endform %}
+									</div>
+
+								{%- when 'text' -%}
+									{%- if block.settings.text != blank -%}
+									<div class="site-footer__rte
+																		{% if section.blocks.size == 1 %} site-footer__single-block--centered{% endif %}">
+										{{ block.settings.text }}
+									</div>
+									{%- endif -%}
+
+								{%- when 'link_list' -%}
+									{%- assign footer_linklist = block.settings.menu -%}
+									<ul class="site-footer__linklist
+																	{% if inline_list %}list--inline{% endif %}">
+										{%- for link in linklists[footer_linklist].links -%}
+										<li class="site-footer__linklist-item">
+											<a href="{{ link.url }}" {% if link.current %} aria-current="page" {% endif %}>
+												{{ link.title | escape }}
+											</a>
+										</li>
+										{%- endfor -%}
+									</ul>
 
 							{%- endcase -%}
 
@@ -1106,6 +1110,11 @@ or request.page_type == 'blog'
 						"zh-CN": "新闻通讯",
 						"zh-TW": "電子報"
 					}
+				},
+				{
+					"type": "richtext",
+					"id": "richtext",
+					"label": "Newsletter text"
 				}
 			]
 		}

@@ -3,33 +3,71 @@
     "sections": {
       "header": {
         "type": "header",
-        "settings": {}
+        "settings": {
+          "align_logo": "left",
+          "logo": "shopify:\/\/shop_images\/logo-main.png",
+          "logo_max_width": 250,
+          "main_linklist": "main-menu",
+          "message": false,
+          "home_page_only": true,
+          "message_text": "Announce something here",
+          "color_bg": "#3a3a3a",
+          "color_text": "#ffffff"
+        }
       },
       "hero-1": {
         "type": "hero",
         "settings": {
+          "alignment": "center",
+          "hero_layout": "full_width",
           "hero_size": "large",
-          "text_size": "large"
+          "text_size": "large",
+          "title": "",
+          "text": "",
+          "button_label": "continue shopping",
+          "button_link": "shopify:\/\/collections"
         }
       },
       "feature-row": {
         "type": "feature-row",
-        "settings": {}
+        "disabled": true,
+        "settings": {
+          "layout": "left",
+          "title": "Image with text",
+          "text": "<p>Pair large text with an image to give focus to your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
+          "button_label": ""
+        }
       },
       "feature-columns": {
         "type": "feature-columns",
+        "disabled": true,
         "blocks": {
           "feature-columns-0": {
             "type": "text_block",
-            "settings": {}
+            "settings": {
+              "enable_image": true,
+              "title": "Add a title or tagline",
+              "text": "<p>Share blog posts, products, or promotions with your customers. Use this text to describe products, share details on availability and style, or as a space to display recent reviews or FAQs.<\/p>",
+              "button_label": ""
+            }
           },
           "feature-columns-1": {
             "type": "text_block",
-            "settings": {}
+            "settings": {
+              "enable_image": true,
+              "title": "Add a title or tagline",
+              "text": "<p>Share blog posts, products, or promotions with your customers. Use this text to describe products, share details on availability and style, or as a space to display recent reviews or FAQs.<\/p>",
+              "button_label": ""
+            }
           },
           "feature-columns-2": {
             "type": "text_block",
-            "settings": {}
+            "settings": {
+              "enable_image": true,
+              "title": "Add a title or tagline",
+              "text": "<p>Share blog posts, products, or promotions with your customers. Use this text to describe products, share details on availability and style, or as a space to display recent reviews or FAQs.<\/p>",
+              "button_label": ""
+            }
           }
         },
         "block_order": [
@@ -38,35 +76,59 @@
           "feature-columns-2"
         ],
         "settings": {
-          "title": ""
+          "title": "",
+          "align_text": "left"
         }
       },
       "collection": {
         "type": "collection",
+        "disabled": true,
         "settings": {
-          "grid": 4
+          "title": "Featured collection",
+          "collection": "",
+          "grid": 4,
+          "rows": 2,
+          "show_vendor": false,
+          "show_view_all": false
         }
       },
       "hero-2": {
         "type": "hero",
+        "disabled": true,
         "settings": {
-          "text_size": "large"
+          "alignment": "center",
+          "hero_layout": "full_width",
+          "hero_size": "medium",
+          "text_size": "large",
+          "title": "Image with text overlay",
+          "text": "<p>Use overlay text to give your customers insight into your brand. Select imagery and text that relates to your style and story.<\/p>",
+          "button_label": ""
         }
       },
       "quotes": {
         "type": "quotes",
+        "disabled": true,
         "blocks": {
           "quotes-0": {
             "type": "quote",
-            "settings": {}
+            "settings": {
+              "quote": "<p>Add customer reviews and testimonials to showcase your store’s happy customers.<\/p>",
+              "author": "Author's name"
+            }
           },
           "quotes-1": {
             "type": "quote",
-            "settings": {}
+            "settings": {
+              "quote": "<p>Add customer reviews and testimonials to showcase your store’s happy customers.<\/p>",
+              "author": "Author's name"
+            }
           },
           "quotes-2": {
             "type": "quote",
-            "settings": {}
+            "settings": {
+              "quote": "<p>Add customer reviews and testimonials to showcase your store’s happy customers.<\/p>",
+              "author": "Author's name"
+            }
           }
         },
         "block_order": [
@@ -80,18 +142,28 @@
       },
       "image-bar": {
         "type": "image-bar",
+        "disabled": true,
         "blocks": {
           "image-bar-0": {
             "type": "image",
-            "settings": {}
+            "settings": {
+              "alignment": "center",
+              "cta_label": ""
+            }
           },
           "image-bar-1": {
             "type": "image",
-            "settings": {}
+            "settings": {
+              "alignment": "center",
+              "cta_label": ""
+            }
           },
           "image-bar-2": {
             "type": "image",
-            "settings": {}
+            "settings": {
+              "alignment": "center",
+              "cta_label": ""
+            }
           }
         },
         "block_order": [
@@ -99,26 +171,78 @@
           "image-bar-1",
           "image-bar-2"
         ],
-        "settings": {}
+        "settings": {
+          "section_height": "medium"
+        }
       },
       "footer": {
         "type": "footer",
         "blocks": {
-          "footer-0": {
-            "type": "link_list",
-            "settings": {}
-          },
           "footer-1": {
             "type": "newsletter",
-            "settings": {}
+            "settings": {
+              "title": "black swallow babes",
+              "richtext": "<p>Lorem ipsum dolor sit amet, consectetuer Lorem ipsum dolor  Lorem ipsum dolor sit amet,<\/p>"
+            }
           }
         },
         "block_order": [
-          "footer-0",
           "footer-1"
         ],
         "settings": {
-          "show_payment_icons": true
+          "show_payment_icons": true,
+          "color_footer_bg": "#f6f6f6",
+          "color_footer_text": "#333232",
+          "show_locale_selector": true,
+          "show_currency_selector": true
+        }
+      },
+      "16133986593f44bf9c": {
+        "type": "collection-hot-categories",
+        "settings": {
+          "enable_background": true,
+          "title": "Hot in categories",
+          "collection": "",
+          "grid": 5,
+          "rows": 1,
+          "show_vendor": false,
+          "show_view_all": false
+        }
+      },
+      "16133996159f681e12": {
+        "type": "collection-trending",
+        "settings": {
+          "enable_background": false,
+          "title": "Trending",
+          "collection": "frontpage",
+          "grid": 6,
+          "rows": 1,
+          "show_vendor": false,
+          "show_view_all": false
+        }
+      },
+      "1613400129759d7400": {
+        "type": "collection-brands",
+        "settings": {
+          "enable_background": true,
+          "title": "Brands of the month",
+          "collection": "",
+          "grid": 5,
+          "rows": 1,
+          "show_vendor": false,
+          "show_view_all": true
+        }
+      },
+      "16134009986d55932e": {
+        "type": "collection-socials",
+        "settings": {
+          "enable_background": false,
+          "title": "Instagram gallery",
+          "collection": "",
+          "grid": 5,
+          "rows": 1,
+          "show_vendor": false,
+          "show_view_all": false
         }
       }
     },
@@ -129,7 +253,11 @@
       "collection",
       "hero-2",
       "quotes",
-      "image-bar"
+      "image-bar",
+      "16133986593f44bf9c",
+      "16133996159f681e12",
+      "1613400129759d7400",
+      "16134009986d55932e"
     ]
   },
   "presets": {

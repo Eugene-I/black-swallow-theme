@@ -14,8 +14,6 @@
 	</style>
 {% endif %}
 
-{% include 'search-drawer' %}
-
 <div data-section-id="{{ section.id }}" data-section-type="header-section" data-header-section>
 	{% if section.settings.message %}
 		{% if section.settings.home_page_only == false or request.page_type == 'index' %}
@@ -56,19 +54,21 @@
 
 	<header class="site-header{% if section.settings.align_logo == 'left' %} logo--left{% else %} logo--center{% endif %}" role="banner">
 		<div class="grid grid--no-gutters grid--table site-header__mobile-nav">
-			{% if section.settings.align_logo == 'center' %}
-				{%- assign logo_classes = 'medium-up--one-third medium-up--push-one-third logo-align--center' -%}
-			{% else %}
-				{%- assign logo_classes = 'medium-up--one-quarter logo-align--left' -%}
-			{% endif %}
-
-			<div class="grid__item {{ logo_classes }} logo-holder">
+			<div class="mobile-nav-holder">
 				{% unless linklists[section.settings.main_linklist] == blank %}
 					<button type="button" class="btn--link site-header__icon site-header__menu js-mobile-nav-toggle mobile-nav--open" aria-controls="MobileNav"  aria-expanded="false" aria-label="{{ 'layout.navigation.menu' | t }}">
 						{% include 'icon-hamburger' %}
 						{% include 'icon-close' %}
 					</button>
 				{% endunless %}
+			</div>
+			<div class="grid__item {{ logo_classes }} logo-holder">
+
+				{% if section.settings.align_logo == 'center' %}
+					{%- assign logo_classes = 'medium-up--one-third medium-up--push-one-third logo-align--center' -%}
+				{% else %}
+					{%- assign logo_classes = 'medium-up--one-quarter logo-align--left' -%}
+				{% endif %}
 
 				{% comment %}
 					Use the uploaded logo from theme settings if enabled.
@@ -84,19 +84,19 @@
 						<a href="{{ routes.root_url }}" class="site-header__logo-image{% if section.settings.align_logo == 'center' %} site-header__logo-image--centered{% endif %}" data-image-loading-animation>
 							{% capture logo_alt %}{{ section.settings.logo.alt | default: shop.name }}{% endcapture %}
 							<img class="lazyload js"
-									 src="{{ section.settings.logo | img_url: '300x300' }}"
-									 data-src="{{ img_url }}"
-									 data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
-									 data-aspectratio="{{ section.settings.logo.aspect_ratio }}"
-									 data-sizes="auto"
-									 alt="{{ logo_alt | escape }}"
-									 style="max-width: {{ section.settings.logo_max_width }}px">
+									src="{{ section.settings.logo | img_url: '300x300' }}"
+									data-src="{{ img_url }}"
+									data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+									data-aspectratio="{{ section.settings.logo.aspect_ratio }}"
+									data-sizes="auto"
+									alt="{{ logo_alt | escape }}"
+									style="max-width: {{ section.settings.logo_max_width }}px">
 							<noscript>
 								{% capture image_size %}{{ section.settings.logo_max_width | escape }}x{% endcapture %}
 								<img src="{{ section.settings.logo | img_url: image_size }}"
-										 srcset="{{ section.settings.logo | img_url: image_size }} 1x, {{ section.settings.logo | img_url: image_size, scale: 2 }} 2x"
-										 alt="{{ section.settings.logo.alt | default: shop.name }}"
-										 style="max-width: {{ section.settings.logo_max_width }}px;">
+										srcset="{{ section.settings.logo | img_url: image_size }} 1x, {{ section.settings.logo | img_url: image_size, scale: 2 }} 2x"
+										alt="{{ section.settings.logo.alt | default: shop.name }}"
+										style="max-width: {{ section.settings.logo_max_width }}px;">
 							</noscript>
 						</a>
 					{% else %}
@@ -107,18 +107,20 @@
 				{% else %}
 					</div>
 				{% endif %}
-			</div>
 
-			{% if section.settings.align_logo == 'left' %}
-				<nav class="grid__item medium-up--one-half small--hide" id="AccessibleNav" role="navigation">
-					{% include 'site-nav', linklist: section.settings.main_linklist %}
-				</nav>
-			{% endif %}
+				{% if section.settings.align_logo == 'left' %}
+					<nav class="grid__item medium-up--one-half small--hide" id="AccessibleNav" role="navigation">
+						{% include 'site-nav', linklist: section.settings.main_linklist %}
+					</nav>
+				{% endif %}
+			</div>
 
 			<div class="grid__item {% if section.settings.align_logo == 'left' %}medium-up--one-quarter{% else %}medium-up--one-third medium-up--push-one-third{% endif %} text-right site-header__icons{% if shop.customer_accounts_enabled %} site-header__icons--plus{% endif %}">
 				<div class="site-header__icons-wrapper">
 					<a href="{{ routes.account_url }}" class="site-header__icon site-header__account">
+						{% comment %}
 						{% include 'icon-login' %}
+						{% endcomment %}
 						<span class="icon__fallback-text">{{ 'layout.customer.account' | t }}</span>
 					</a>
 
@@ -133,19 +135,25 @@
 					{% if shop.customer_accounts_enabled %}
 						{% if customer %}
 							<a href="{{ routes.account_url }}" class="site-header__icon site-header__account">
+								{% comment %}
 								{% include 'icon-login' %}
+								{% endcomment %}
 								<span class="icon__fallback-text">{{ 'layout.customer.account' | t }}</span>
 							</a>
 						{% else %}
 							<a href="{{ routes.account_login_url }}" class="site-header__icon site-header__account">
+								{% comment %}
 								{% include 'icon-login' %}
+								{% endcomment %}
 								<span class="icon__fallback-text">{{ 'layout.customer.log_in' | t }}</span>
 							</a>
 						{% endif %}
 					{% endif %}
 
 					<a href="{{ routes.cart_url }}" class="site-header__icon site-header__cart">
+						{% comment %}
 						{% include 'icon-cart' %}
+						{% endcomment %}
 						<span class="icon__fallback-text">{{ 'layout.cart.title' | t }}</span>
 						<div id="CartCount" class="site-header__cart-count{% if cart.item_count == 0 %} hide{% endif %} critical-hidden" data-cart-count-bubble>
 							<span data-cart-count>{{ cart.item_count }}</span>
@@ -157,6 +165,10 @@
 				</div>
 
 			</div>
+		</div>
+
+		<div class="mobile-search-holder">
+			{% include 'search-drawer' %}
 		</div>
 
 		<nav class="mobile-nav-wrapper medium-up--hide critical-hidden" role="navigation">

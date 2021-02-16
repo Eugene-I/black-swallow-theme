@@ -129,6 +129,16 @@ $base-min-width: 320px;
 	.h3 {
 		margin: 0 0 3px;
 	}
+	.add-to-wish {
+		background: url("IndividualIconsPage_WhiteOutline_Heart-black-sprite.png");
+		background-size: 100% auto;
+		display: block;
+		height: 21px;
+		width: 24px;
+		&:hover {
+			background-position: 0 -39px;
+		}
+	}
 	/*
 	.sticker {
 		background: #a8a8a8;
@@ -137,13 +147,6 @@ $base-min-width: 320px;
 		vertical-align: top;
 		margin: 0 0 0 -8px;
 		padding: 5px 10px;
-	}
-	.add-to-wish {
-		background: url("IndividualIconsPage_WhiteOutline_Heart-black.png");
-		background-size: contain;
-		display: block;
-		height: 20px;
-		width: 24px;
 	}
 	.sizes-options-list {
 		background: #d8d8d8;
@@ -185,9 +188,10 @@ $base-min-width: 320px;
 	}
 	*/
 }
+.product-card__media-holder,
 .product-card__image-with-placeholder-wrapper {
-	// background: #ccc;
-	height: 183px;
+	background: #ccc;
+	min-height: 183px;
 	position: relative;
 }
 .grid-view-item__image-wrapper{
@@ -203,7 +207,6 @@ $base-min-width: 320px;
 		font-weight: inherit;
 	}
 }
-/*
 .product-card__header {
 	display: flex;
 	flex-direction: row;
@@ -223,6 +226,7 @@ $base-min-width: 320px;
 		}
 	}
 }
+/*
 .product-card__media-overlay-content {
 	display: flex;
 	flex-direction: column;
@@ -238,6 +242,11 @@ $base-min-width: 320px;
 }
 
 */
+
+.section-category-description {
+	background: #ccc;
+	padding: 20px 0;
+}
 
 /*------------------------------------------------------------------------------------------------------------------------------------
   #

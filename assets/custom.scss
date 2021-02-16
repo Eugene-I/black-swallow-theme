@@ -1580,6 +1580,14 @@ $base-min-width: 320px;
 // 	}
 // }
 
+body {
+	font: #{$font-size-base-mobile}/#{$line-height-base-mobile} $base-font-family;
+	@media screen and (min-width: 767px) {
+		font-size: $font-size-base-desktop;
+		line-height: $line-height-base-desktop;
+	}
+}
+
 .font-size-small {
 	font-size: 10px;
 	line-height: 13px;
@@ -1917,6 +1925,7 @@ textarea {
 	height: 32px;
 	line-height: 12px;
 	margin: 0;
+	min-height: 0;
 	outline: none;
 	padding: 9px 11px;
 	width: 100%;
@@ -2030,21 +2039,76 @@ input[type="number"] {
 	.btn--link {
 		color: inherit;
 	}
-	.logo-holder {
-		@media screen and (max-width: 767px) {
-			display: flex;
-			flex-direction: row;
-			flex-wrap: nowrap;
-			justify-content: flex-start;
-			align-content: center;
-			align-items: center;
-			width: auto !important;
-
-		}
-	}
 }
+
 .site-header {
 	border: 0;
+	padding: 10px 0;
+}
+
+.site-header__mobile-nav {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: space-between;
+	align-content: center;
+	align-items: center;
+	> div {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: nowrap;
+		justify-content: flex-start;
+		align-content: center;
+		align-items: center;
+	}
+	.mobile-nav-holder,
+	.site-header__icons {
+		width: 33.3333%;
+	}
+	.logo-holder {
+		// @media screen and (max-width: 767px) {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: nowrap;
+		justify-content: flex-start;
+		align-content: center;
+		align-items: center;
+		width: auto !important;
+		// }
+	}
+}
+
+.site-header__icons {
+	justify-content: flex-end;
+	padding: 0;
+	.site-header__search-toggle {
+		display: none;
+	}
+	.site-header__icon {
+		background-repeat: no-repeat;
+		background-size: 100% auto;
+		font-size: 0;
+		height: 22px;
+		margin: 0 0 0 11px;
+		padding: 0;
+		width: 20px;
+	}
+	.site-header__account {
+		background-image: url("IndividualIconsPage_WhiteOutline_My-Profile-sprite.png");
+		// height: 20px;
+		// width: 20px;
+		&:hover {
+			background-position: 0 -45px;
+		}
+	}
+	.site-header__cart {
+		background-image: url("IndividualIconsPage_WhiteOutline_Shopping-bag-sprite.png");
+		// height: 20px;
+		// width: 20px;
+		&:hover {
+			background-position: 0 -35px;
+		}
+	}
 }
 
 .site-header__logo {
@@ -2070,6 +2134,25 @@ input[type="number"] {
 		.site-nav__label {
 			border: 0;
 		}
+	}
+}
+
+.mobile-search-holder {
+	.search-bar {
+		background: none;
+		display: block;
+		margin: 10px 0 0;
+		position: static;
+		transform: none;
+		// &.drawer {}
+	}
+	.search-form__container {
+		background: none;
+		padding: 0 10px;
+	}
+	.search-bar__submit,
+	.search-bar__actions {
+		display: none;
 	}
 }
 

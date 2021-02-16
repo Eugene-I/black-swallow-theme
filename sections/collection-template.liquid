@@ -21,54 +21,40 @@
 	<header class="collection-header">
 		{%- assign is_filter_by_available = false -%}
 		{%- if section.settings.tags_enable and collection.all_tags.size > 0 -%}
-		{%- assign is_filter_by_available = true -%}
+			{%- assign is_filter_by_available = true -%}
 		{%- endif -%}
 
 		{% if section.settings.show_collection_image and collection.image %}
-		<div class="collection-hero">
-			<div class="collection-hero__image ratio-container lazyload js"
-				data-bgset="{% include 'bgset', image: collection.image %}" data-sizes="auto" data-parent-fit="cover"
-				data-image-loading-animation></div>
-			<noscript>
-				<div class="collection-hero__image"
-					style="background-image: url({{ collection.image | img_url: '2048x600', crop: 'top' }});"></div>
-			</noscript>
-			<div class="collection-hero__title-wrapper">
-				<h1 class="collection-hero__title page-width">
-					<span class="visually-hidden">{{ 'collections.general.collection_label' | t }}: </span>
-					{{ collection.title }}
-				</h1>
+			<div class="collection-hero">
+				<div class="collection-hero__image ratio-container lazyload js"
+					data-bgset="{% include 'bgset', image: collection.image %}" data-sizes="auto" data-parent-fit="cover"
+					data-image-loading-animation></div>
+				<noscript>
+					<div class="collection-hero__image"
+						style="background-image: url({{ collection.image | img_url: '2048x600', crop: 'top' }});"></div>
+				</noscript>
+				<div class="collection-hero__title-wrapper">
+					<h1 class="collection-hero__title page-width">
+						<span class="visually-hidden">{{ 'collections.general.collection_label' | t }}: </span>
+						{{ collection.title }}
+					</h1>
+				</div>
 			</div>
-		</div>
-		{% if is_filter_by_available == false and section.settings.sort_enable == false %}
-		<div class="page-width">
-			<span class="filters-toolbar__product-count">{{ 'collections.general.items_with_count' | t: count:
-				collection.products_count }}</span>
-		</div>
-		{% endif %}
-		{% if collection.description != blank %}
-		<div class="rte collection-description page-width">
-			{{ collection.description }}
-		</div>
-		{% endif %}
-		{% else %}
-		<div class="page-width">
-			<div class="section-header text-center">
-				<h1>
-					<span class="visually-hidden">{{ 'collections.general.collection_label' | t }}: </span>
-					{{ collection.title }}
-				</h1>
-				{% if collection.description != blank %}
-				<div class="rte">
+
+			{% if is_filter_by_available == false and section.settings.sort_enable == false %}
+				<div class="page-width">
+					<span class="filters-toolbar__product-count">{{ 'collections.general.items_with_count' | t: count:
+						collection.products_count }}</span>
+				</div>
+			{% endif %}
+
+			{% if collection.description != blank %}
+				<div class="rte collection-description page-width">
 					{{ collection.description }}
 				</div>
-				{% endif %}
-				{% if is_filter_by_available == false and section.settings.sort_enable == false %}
-				<span class="filters-toolbar__product-count">{{ 'collections.general.items_with_count' | t: count:
-					collection.products_count }}</span>
-				{% endif %}
-			</div>
-		</div>
+			{% endif %}
+			
+		{% else %}
 		{% endif %}
 
 		{% if is_filter_by_available or section.settings.sort_enable %}
@@ -237,6 +223,25 @@
 		{%- endif -%}
 	</div>
 </div>
+<section class="section-category-description">
+	<div class="page-width">
+		<h1>
+			<span class="visually-hidden">{{ 'collections.general.collection_label' | t }}: </span>
+			{{ collection.title }}
+		</h1>
+
+		{% if collection.description != blank %}
+			<div class="rte">
+				{{ collection.description }}
+			</div>
+		{% endif %}
+
+		{% if is_filter_by_available == false and section.settings.sort_enable == false %}
+			<span class="filters-toolbar__product-count">{{ 'collections.general.items_with_count' | t: count:
+				collection.products_count }}</span>
+		{% endif %}
+	</div>
+</section>
 
 {% endpaginate %}
 

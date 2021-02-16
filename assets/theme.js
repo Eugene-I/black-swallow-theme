@@ -8075,7 +8075,7 @@ theme.Product = (function() {
     this.initDesktopBreakpoint();
     this._stringOverrides();
     this._initVariants();
-    this._initMediaSwitch();
+    // this._initMediaSwitch();
     this._initAddToCart();
     this._setActiveThumbnail();
     this._initProductVideo();
@@ -8115,12 +8115,12 @@ theme.Product = (function() {
     _initMobileBreakpoint: function() {
       if (this.mqlSmall.matches) {
         // initialize thumbnail slider on mobile if more than four thumbnails
-        if (
-          this.container.querySelectorAll(this.selectors.productThumbImages)
-            .length > 4
-        ) {
-          this._initThumbnailSlider();
-        }
+        // if (
+        //   this.container.querySelectorAll(this.selectors.productThumbImages)
+        //     .length > 4
+        // ) {
+        //   this._initThumbnailSlider();
+        // }
 
         // destroy image zooming if enabled
         if (this.settings.zoomEnabled) {
@@ -8133,9 +8133,9 @@ theme.Product = (function() {
 
         this.settings.bpSmall = true;
       } else {
-        if (this.settings.sliderActive) {
-          this._destroyThumbnailSlider();
-        }
+        // if (this.settings.sliderActive) {
+        //   this._destroyThumbnailSlider();
+        // }
 
         this.settings.bpSmall = false;
       }

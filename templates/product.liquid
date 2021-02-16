@@ -1,27 +1,40 @@
+<section class="section-promo-list">
+	<div class="container container-fluid">
+		<ul class="font-size-subheading">
+			<li> <strong class="title">current promo</strong>
+				<p>20% off Category</p>
+			</li>
+			<li> <strong class="title">current promo</strong>
+				<p>20% off Category</p>
+			</li>
+		</ul>
+	</div>
+</section>
+
 {% comment %}
-  The contents of the product.liquid template can be found in /sections/product-template.liquid
+The contents of the product.liquid template can be found in /sections/product-template.liquid
 {% endcomment %}
 
 {% section 'product-template' %}
 {% section 'product-recommendations' %}
 
 {% if collection %}
-  <div class="text-center return-link-wrapper page-width">
-    <a href="{{ collection.url }}" class="btn btn--secondary btn--has-icon-before return-link">
-      {% include 'icon-arrow-left' %}
-      {{ 'products.product.back_to_collection' | t: title: collection.title }}
-    </a>
-  </div>
+<div class="text-center return-link-wrapper page-width">
+	<a href="{{ collection.url }}" class="btn btn--secondary btn--has-icon-before return-link">
+		{% include 'icon-arrow-left' %}
+		{{ 'products.product.back_to_collection' | t: title: collection.title }}
+	</a>
+</div>
 {% endif %}
 
 <script>
-  // Override default values of shop.strings for each template.
-  // Alternate product templates can change values of
-  // add to cart button, sold out, and unavailable states here.
-  theme.productStrings = {
-    addToCart: {{ 'products.product.add_to_cart' | t | json }},
-    soldOut: {{ 'products.product.sold_out' | t | json }},
-    unavailable: {{ 'products.product.unavailable' | t | json }}
+	// Override default values of shop.strings for each template.
+	// Alternate product templates can change values of
+	// add to cart button, sold out, and unavailable states here.
+	theme.productStrings = {
+		addToCart: {{ 'products.product.add_to_cart' | t | json }},
+	soldOut: { { 'products.product.sold_out' | t | json } },
+	unavailable: { { 'products.product.unavailable' | t | json } }
   }
 </script>
 

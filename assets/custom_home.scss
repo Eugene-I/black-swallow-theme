@@ -191,6 +191,7 @@ $base-min-width: 320px;
 		align-content: stretch;
 		align-items: stretch;
 		margin: -5px;
+		overflow: hidden;
 		&.three-columns {
 			> div {
 				@media screen and (max-width: 767px) {
@@ -288,6 +289,16 @@ $base-min-width: 320px;
 	}
 }
 
+/*
+	homepage slider
+*/
+.hero__inner {
+	padding: 24px 0;
+	vertical-align: bottom;
+}
+/*
+	homepage slider END
+*/
 .color-selector-dropdown {
 	background: $color-system-white;
 	border: 1px solid $color-system-black;
@@ -435,8 +446,4 @@ $base-min-width: 320px;
 			display: block;
 		}
 	}
-}
-
-.section-category-description {
-	background: #ccc;
 }

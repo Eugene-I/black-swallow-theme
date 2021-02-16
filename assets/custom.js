@@ -47,6 +47,40 @@ function initSlick() {
 		infinite: false,
 		variableWidth: true
 	});
+
+	let $productSlider = $('.js-product-slider');
+	let $productSliderFor = $productSlider.children('.for');
+	let $productSliderNav = $productSlider.children('.nav');
+	$productSliderFor.slick({
+		slidesToShow: 2,
+		slidesToScroll: 2,
+		arrows: false,
+		infinite: false,
+		asNavFor: $productSliderNav,
+		responsive: [
+			{
+				breakpoint: 768,
+				settings: {
+					slidesToShow: 1,
+					slidesToScroll: 1
+				}
+			}
+		]
+	});
+	$productSliderNav.slick({
+		slidesToShow: 1,
+		slidesToScroll: 1,
+		arrows: false,
+		// infinite: false,
+		vertical: true,
+		asNavFor: $productSliderFor,
+		responsive: [
+			{
+				breakpoint: 768,
+				settings: "unslick"
+			}
+		]
+	});
 }
 
 $('form').on('click', 'button:not([type="submit"])', function(e){
