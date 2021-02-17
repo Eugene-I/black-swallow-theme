@@ -202,5 +202,19 @@
 		<li id="a11y-refresh-page-message">{{ 'general.accessibility.refresh_page' | t }}</li>
 		<li id="a11y-selection-message">{{ 'general.accessibility.selection_help' | t }}</li>
 	</ul>
+	<script>
+		// First we get the viewport height and we multiple it by 1% to get a value for a vh unit
+		let wh = window.innerHeight * 0.01;
+		// Then we set the value in the --vh custom property to the root of the document
+		document.documentElement.style.setProperty('--wh', `${wh}px`);
+	  
+		// We listen to the resize event
+		window.addEventListener('resize orientationchange', () => {
+		  // We execute the same script as before
+		  wh = window.innerHeight * 0.01;
+		  // Then we set the value in the --vh custom property to the root of the document
+		  document.documentElement.style.setProperty('--wh', `${wh}px`);
+		});
+	  </script>
 </body>
 </html>
